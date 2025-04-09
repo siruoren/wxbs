@@ -1,9 +1,121 @@
 多账号执行间隔：5.0
-[2025-04-09 10:06:46]
-[1/1]账号：707****.com创建虚拟ip地址：223.85.210.109
-已设置为随机步数范围(4590~6886) 随机值:5526
-修改步数（5526）[success]
+[2025-04-09 12:57:30]
+[1/1]账号：707****.com执行异常:Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/urllib3/connection.py", line 199, in _new_conn
+    sock = connection.create_connection(
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [Errno 110] Connection timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/urllib3/connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/urllib3/connectionpool.py", line 490, in _make_request
+    raise new_e
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/urllib3/connectionpool.py", line 466, in _make_request
+    self._validate_conn(conn)
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/urllib3/connectionpool.py", line 1095, in _validate_conn
+    conn.connect()
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/urllib3/connection.py", line 693, in connect
+    self.sock = sock = self._new_conn()
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/urllib3/connection.py", line 214, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x7f0cbc07bbb0>: Failed to establish a new connection: [Errno 110] Connection timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/urllib3/connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='account-cn.huami.com', port=443): Max retries exceeded with url: /v1/client/app_tokens?app_name=com.xiaomi.hm.health&dn=api-user.huami.com%2Capi-mifit.huami.com%2Capp-analytics.huami.com&login_token=ZQVBQFJyQktGHlp6QkpbRl5LRl5qek4uXAQEBAAAAAP6fl35L0-oDtx5V60NPxAqa31VJZpbwVB-4TcDJM9kRKFxJQ56sdb_4rh9XoAM3qO1jrRajuJ64GRVcUqWwUxG3U5wG3u1i-f2YTlw1V8zTJMYKhRWfSVzqKAtzlfGPXBeQ9vRzq1t_rSlP_TiWQpME27HoEMs5OJMU3jag1Wa9iiKSfTrjdNb0tnG6CPbkQQ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f0cbc07bbb0>: Failed to establish a new connection: [Errno 110] Connection timed out'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main.py", line 265, in run_single_account
+    exec_msg, success = runner.login_and_post_step(min_step, max_step)
+  File "main.py", line 210, in login_and_post_step
+    app_token = self.get_app_token(login_token)
+  File "main.py", line 192, in get_app_token
+    response = requests.get(url, headers=headers).json()
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='account-cn.huami.com', port=443): Max retries exceeded with url: /v1/client/app_tokens?app_name=com.xiaomi.hm.health&dn=api-user.huami.com%2Capi-mifit.huami.com%2Capp-analytics.huami.com&login_token=ZQVBQFJyQktGHlp6QkpbRl5LRl5qek4uXAQEBAAAAAP6fl35L0-oDtx5V60NPxAqa31VJZpbwVB-4TcDJM9kRKFxJQ56sdb_4rh9XoAM3qO1jrRajuJ64GRVcUqWwUxG3U5wG3u1i-f2YTlw1V8zTJMYKhRWfSVzqKAtzlfGPXBeQ9vRzq1t_rSlP_TiWQpME27HoEMs5OJMU3jag1Wa9iiKSfTrjdNb0tnG6CPbkQQ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f0cbc07bbb0>: Failed to establish a new connection: [Errno 110] Connection timed out'))
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/urllib3/connection.py", line 199, in _new_conn
+    sock = connection.create_connection(
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: [Errno 110] Connection timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/urllib3/connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/urllib3/connectionpool.py", line 490, in _make_request
+    raise new_e
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/urllib3/connectionpool.py", line 466, in _make_request
+    self._validate_conn(conn)
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/urllib3/connectionpool.py", line 1095, in _validate_conn
+    conn.connect()
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/urllib3/connection.py", line 693, in connect
+    self.sock = sock = self._new_conn()
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/urllib3/connection.py", line 214, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x7f0cbc07bbb0>: Failed to establish a new connection: [Errno 110] Connection timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/urllib3/connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='account-cn.huami.com', port=443): Max retries exceeded with url: /v1/client/app_tokens?app_name=com.xiaomi.hm.health&dn=api-user.huami.com%2Capi-mifit.huami.com%2Capp-analytics.huami.com&login_token=ZQVBQFJyQktGHlp6QkpbRl5LRl5qek4uXAQEBAAAAAP6fl35L0-oDtx5V60NPxAqa31VJZpbwVB-4TcDJM9kRKFxJQ56sdb_4rh9XoAM3qO1jrRajuJ64GRVcUqWwUxG3U5wG3u1i-f2YTlw1V8zTJMYKhRWfSVzqKAtzlfGPXBeQ9vRzq1t_rSlP_TiWQpME27HoEMs5OJMU3jag1Wa9iiKSfTrjdNb0tnG6CPbkQQ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f0cbc07bbb0>: Failed to establish a new connection: [Errno 110] Connection timed out'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main.py", line 265, in run_single_account
+    exec_msg, success = runner.login_and_post_step(min_step, max_step)
+  File "main.py", line 210, in login_and_post_step
+    app_token = self.get_app_token(login_token)
+  File "main.py", line 192, in get_app_token
+    response = requests.get(url, headers=headers).json()
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.8.18/x64/lib/python3.8/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='account-cn.huami.com', port=443): Max retries exceeded with url: /v1/client/app_tokens?app_name=com.xiaomi.hm.health&dn=api-user.huami.com%2Capi-mifit.huami.com%2Capp-analytics.huami.com&login_token=ZQVBQFJyQktGHlp6QkpbRl5LRl5qek4uXAQEBAAAAAP6fl35L0-oDtx5V60NPxAqa31VJZpbwVB-4TcDJM9kRKFxJQ56sdb_4rh9XoAM3qO1jrRajuJ64GRVcUqWwUxG3U5wG3u1i-f2YTlw1V8zTJMYKhRWfSVzqKAtzlfGPXBeQ9vRzq1t_rSlP_TiWQpME27HoEMs5OJMU3jag1Wa9iiKSfTrjdNb0tnG6CPbkQQ (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f0cbc07bbb0>: Failed to establish a new connection: [Errno 110] Connection timed out'))
 
 
-执行账号总数1，成功：1，失败：0
+执行账号总数1，成功：0，失败：1
 pushplus推送完毕：905-未实名认证用户无法发送消息。实名地址：http://verify.pushplus.plus
