@@ -29,3 +29,10 @@ jobs:
           pip3 install requests pytz
           python3 main.py
 
+      - name: Delete workflow runs for current repo
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+         token: ${{ secrets.actions_release }}
+         repository: ${{ github.repository }}
+         retain_days: 7
+         keep_minimum_runs: 6
